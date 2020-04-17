@@ -1,6 +1,7 @@
 package Application.CarRental.controllers;
 
 import Application.CarRental.exceptions.ObjectAlreadyExists;
+import Application.CarRental.exceptions.ObjectNotFound;
 import Application.CarRental.models.Car;
 import Application.CarRental.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,10 @@ public class CarController {
     public void addNewCar(@RequestBody Car newCar)  {
         try{
             carService.addNewObject(newCar);
-        } catch (ObjectAlreadyExists exception) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Car already exists");
+        } catch (ObjectAlreadyExists exception1) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Car with given license already exists.");
+        } catch (ObjectNotFound exception2) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Model, brand or rank does not exists.");
         }
         throw new ResponseStatusException(HttpStatus.OK, "Car sucessfully added.");
 

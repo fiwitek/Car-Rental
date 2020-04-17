@@ -3,7 +3,6 @@ package Application.CarRental.controllers;
 import Application.CarRental.exceptions.ObjectAlreadyExists;
 import Application.CarRental.models.Brand;
 import Application.CarRental.services.BrandService;
-import Application.CarRental.validators.BrandValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
